@@ -1,0 +1,122 @@
+<div class='view'>
+    <div class='container'>
+        <form name='entityUIForm' data-ng-controller='UIFormController as uc' novalidate>
+            <br/>
+            <header>
+                <div class='jumbotron'>
+                    <h3>
+                        <span class='glyphicon glyphicon-flag'></span>
+                        <%=entityName%>
+                    </h3>
+                    </div>
+            </header>
+            <div class='panel-group' id='accordion' role='tablist' aria-multiselectable='true'>
+                <%
+                    var sort ={};
+                    for(var attrName in entity.schema ) {
+                        if(entity.schema[attrName].special=='password')continue;
+                        var fchar = attrName[0].toUpperCase();
+                        var groupArr = sort[fchar];
+                        if (!groupArr) {
+                            groupArr = [];
+                            sort[fchar] = groupArr;
+                        }
+
+                        var type= entity.schema[attrName]
+                                ,dbType=null
+                                ,special=null;
+                        if(typeof(type)==="function"||type instanceof  Array){
+                            dbType=type;
+                        }else{
+                            dbType=type.type;
+
+                            special=type.special||null;
+                        }
+
+                        groupArr.push({name: attrName, type: type,dbType:dbType,special:special });
+                    }
+                    for(var c in sort ){
+
+                        var groupArr = sort[c];
+                        var headingNameId = "heading" + c;
+                        var collapseNameId = "collapse" + c;
+                       %>
+                        <div class='panel panel-default'>
+                            <div class='panel-heading' role='tab' id='<%=headingNameId%>'>
+                                <h4 class='panel-title'>
+                                    <a role='button' data-toggle='collapse'  href='#<%=collapseNameId%>' aria-expanded='true' aria-controls='<%=collapseNameId%>'>
+                                        Collapsible Group Item #<%=c%>
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id='<%=collapseNameId%>' class='panel-collapse collapse in' role='tabpanel' aria-labelledby='<%=headingNameId%>'>
+                                <div class='panel-body'>
+                                    <%
+                                    for(var index in groupArr){
+                                    var item =groupArr[index];
+                                        if(item.dbType instanceof  Array){
+
+                                        }
+                                        else{
+                                    %>
+                                    <div class='row'>
+                                        <div class='col-md-2'>
+                                            <label class='control-label' for='<%=item.name%>'><%=item.name%></label>
+                                        </div>
+                                        <div class='col-md-10'>
+                                            <div class='form-inline'>
+                                    <%
+
+                                        if(item.type.ref){
+                                            var displayAttr = item.special?item.special:"_id";
+                                    %>
+                                        <div class='form-inline'><cascade name="<%=item.name%>" ng-bind-obj="localEntity.<%=item.name%>" ng-display="<%=displayAttr%>" ng-entity="<%=item.type.ref%>"></cascade></div>
+                                    <%
+                                        }else if(item.dbType==Number){
+                                    %>
+                                        <number name="<%=item.name%>" class='form-control'  ng-model='localEntity.<%=item.name%>'  <%=(item.type.precision?("precision='"+item.type.precision.toString()+"'"):"")%>  <%=(item.type.required?"required":"")%> ></number>
+                                     <%
+                                        }else if(item.dbType==Date){
+                                     %>
+                                        <div class="form-inline"><datepicker name="<%=item.name%>" value='localEntity.<%=item.name%>'  <%=(item.type.required?"required":"")%> ></datepicker></div>
+                                     <%
+                                        }else if(item.dbType==Boolean){
+                                     %>
+                                        <input name="<%=item.name%>" class='form-control' type='checkbox'  ng-model='localEntity.<%=item.name%>'  <%=(item.type.required?"required":"")%>/>
+                                     <%
+                                        }else{
+                                     %>
+                                        <input name="<%=item.name%>" class='form-control' type='<%=(item.special=='password'?'password':(item.special=='email'?'email':'text'))%>'  ng-model='localEntity.<%=item.name%>'  <%=(item.type.required?"required":"")%>/>
+                                     <%
+                                        }
+                                     %><%if(item.type&&item.type.required){%>
+                                                <div class='tooltip bottom' role='tooltip' style='opacity:1;z-index:0px;'  ng-show='entityUIForm.<%=item.name%>.$touched && entityUIForm.<%=item.name%>.$invalid'>
+                                                    <div class='tooltip-arrow' style='border-bottom-color:#f2dede;'></div>
+                                                    <div class='alert-danger' style='padding:3px 8px;border-radius:4px;text-align:center;text-decoration:none;'><%=item.name%> is required.</div>
+                                                </div>
+                                                <%}%>
+                                            </div>
+                                        </div>
+                                    </div><%
+                                     }
+                                   }
+
+                                     %>
+                                </div>
+                            </div>
+                        </div>
+                    <%
+                    }
+                  %>
+            </div>
+                <hr/>
+            <div class='row'>
+                 <div class='col-md-12'>
+                     <button type='submit' class='btn btn-primary' data-ng-click='Save()' ng-disabled='entityUIForm.$invalid || !entityUIForm.$dirty'>{{SaveText}}</button>
+                     <button type='button' class='btn btn-primary' data-ng-click='Delete()' ng-show='uc.ShowDeleteBtn'>{{DeleteText}}</button>
+                  </div>
+            </div>
+
+        </form>
+    </div>
+</div>

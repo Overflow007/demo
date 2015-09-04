@@ -1,0 +1,13 @@
+{
+  "name":"rule"
+,"schema":{
+  "name":{ "type": String, "index": true, "unique": true  }
+,"entity":{"type": String}
+  ,"function":{"type": String}
+,"message":{"type": String}
+,"createAt":{ "type": Date, "default": Date.now }
+,"updateAt":{ "type": Date, "default": Date.now, "special": Date.now }
+,"condition":{"type":mongoose.Schema.Types.Mixed}
+, "roles":[{"type":mongoose.Schema.Types.ObjectId,"ref":"role", "special":"name"}]
+}
+}

@@ -1,0 +1,29 @@
+.sourthParkGuide-canvas{
+    width: 150px;
+    min-width: 150px;
+    background:none !important;
+    position: relative;
+
+}
+
+
+.sourthParkGuide-guide{
+    position: absolute;top:0px;left :0px;width: 100%;min-width: 150px;
+}
+.sourthParkGuide-guide:hover{
+    cursor:pointer;
+}
+
+.sourthParkGuide-lefteye{
+    position: absolute;top:88px;left :52px;width: 4%;min-width: 6px;
+    transition:all 0.1s;
+}
+.sourthParkGuide-righteye{
+    position: absolute;top:88px;left :92px;width: 4%;min-width:6px;
+    transition:all 0.1s;
+}
+
+.sourthParkGuide-dialog-content{
+    width: 125px;
+    height: auto;
+}

@@ -1,0 +1,91 @@
+<div class="demo-header">
+    <div class="container demo-header-container">
+    <div id="carousel-example-captions" class="carousel slide" data-ride="carousel" ng-controller="DemoController">
+        <ol class="carousel-indicators" >
+            <li data-target="#carousel-example-captions" data-slide-to="0" class="" style="border-color: black"></li>
+            <li data-target="#carousel-example-captions" data-slide-to="1" class="active" style="border-color: black"></li>
+            <li data-target="#carousel-example-captions" data-slide-to="2" class="" style="border-color: black"></li>
+        </ol>
+        <div class="carousel-inner" role="listbox">
+            <div class="item">
+                <div style="height: 400px;width: 100%;background-image: url('/images/viewEditor.png');background-size:cover;"></div>
+                <!--<img data-src="holder.js/900x500/auto/#777:#777" alt="900x500" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iOTAwIiBoZWlnaHQ9IjUwMCIgdmlld0JveD0iMCAwIDkwMCA1MDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjwhLS0KU291cmNlIFVSTDogaG9sZGVyLmpzLzkwMHg1MDAvYXV0by8jNzc3OiM3NzcKQ3JlYXRlZCB3aXRoIEhvbGRlci5qcyAyLjYuMC4KTGVhcm4gbW9yZSBhdCBodHRwOi8vaG9sZGVyanMuY29tCihjKSAyMDEyLTIwMTUgSXZhbiBNYWxvcGluc2t5IC0gaHR0cDovL2ltc2t5LmNvCi0tPjxkZWZzPjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+PCFbQ0RBVEFbI2hvbGRlcl8xNGY5NzVmMTZkNiB0ZXh0IHsgZmlsbDojNzc3O2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjQ1cHQgfSBdXT48L3N0eWxlPjwvZGVmcz48ZyBpZD0iaG9sZGVyXzE0Zjk3NWYxNmQ2Ij48cmVjdCB3aWR0aD0iOTAwIiBoZWlnaHQ9IjUwMCIgZmlsbD0iIzc3NyIvPjxnPjx0ZXh0IHg9IjMzMy4yMDMxMjUiIHk9IjI3MC4xIj45MDB4NTAwPC90ZXh0PjwvZz48L2c+PC9zdmc+" data-holder-rendered="true">-->
+                <!--<img data-src="holder.js/900x500/auto/#777:#777" alt="900x500" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iOTAwIiBoZWlnaHQ9IjUwMCIgdmlld0JveD0iMCAwIDkwMCA1MDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjwhLS0KU291cmNlIFVSTDogaG9sZGVyLmpzLzkwMHg1MDAvYXV0by8jNzc3OiM3NzcKQ3JlYXRlZCB3aXRoIEhvbGRlci5qcyAyLjYuMC4KTGVhcm4gbW9yZSBhdCBodHRwOi8vaG9sZGVyanMuY29tCihjKSAyMDEyLTIwMTUgSXZhbiBNYWxvcGluc2t5IC0gaHR0cDovL2ltc2t5LmNvCi0tPjxkZWZzPjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+PCFbQ0RBVEFbI2hvbGRlcl8xNGY5NzVmMTZkNiB0ZXh0IHsgZmlsbDojNzc3O2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjQ1cHQgfSBdXT48L3N0eWxlPjwvZGVmcz48ZyBpZD0iaG9sZGVyXzE0Zjk3NWYxNmQ2Ij48cmVjdCB3aWR0aD0iOTAwIiBoZWlnaHQ9IjUwMCIgZmlsbD0iIzc3NyIvPjxnPjx0ZXh0IHg9IjMzMy4yMDMxMjUiIHk9IjI3MC4xIj45MDB4NTAwPC90ZXh0PjwvZz48L2c+PC9zdmc+" data-holder-rendered="true">-->
+                <div class="carousel-caption" style="color: black">
+                    <h3>View Editor</h3>
+                    <p>Quick way to deploy somthing on this site.</p>
+                </div>
+            </div>
+            <div class="item active">
+                <div style="height: 400px;width: 100%;background-image: url('/images/framework.jpg');background-size:cover;"></div>
+                <!--<img data-src="holder.js/900x500/auto/#666:#666" alt="900x500" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iOTAwIiBoZWlnaHQ9IjUwMCIgdmlld0JveD0iMCAwIDkwMCA1MDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjwhLS0KU291cmNlIFVSTDogaG9sZGVyLmpzLzkwMHg1MDAvYXV0by8jNjY2OiM2NjYKQ3JlYXRlZCB3aXRoIEhvbGRlci5qcyAyLjYuMC4KTGVhcm4gbW9yZSBhdCBodHRwOi8vaG9sZGVyanMuY29tCihjKSAyMDEyLTIwMTUgSXZhbiBNYWxvcGluc2t5IC0gaHR0cDovL2ltc2t5LmNvCi0tPjxkZWZzPjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+PCFbQ0RBVEFbI2hvbGRlcl8xNGY5NzVmNDQwZCB0ZXh0IHsgZmlsbDojNjY2O2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjQ1cHQgfSBdXT48L3N0eWxlPjwvZGVmcz48ZyBpZD0iaG9sZGVyXzE0Zjk3NWY0NDBkIj48cmVjdCB3aWR0aD0iOTAwIiBoZWlnaHQ9IjUwMCIgZmlsbD0iIzY2NiIvPjxnPjx0ZXh0IHg9IjMzMy4yMDMxMjUiIHk9IjI3MC4xIj45MDB4NTAwPC90ZXh0PjwvZz48L2c+PC9zdmc+" data-holder-rendered="true">-->
+                <div class="carousel-caption" style="color: black">
+                    <h3>JavaScript Inheritance</h3>
+                    <p>Start with simple javaScript inheritance.</p>
+                </div>
+            </div>
+            <div class="item">
+                <div style="height: 400px;width: 100%;background-image: url('/images/entityManager.png');background-size:cover;"></div>
+                <!--<img data-src="holder.js/900x500/auto/#555:#555" alt="900x500" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iOTAwIiBoZWlnaHQ9IjUwMCIgdmlld0JveD0iMCAwIDkwMCA1MDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjwhLS0KU291cmNlIFVSTDogaG9sZGVyLmpzLzkwMHg1MDAvYXV0by8jNTU1OiM1NTUKQ3JlYXRlZCB3aXRoIEhvbGRlci5qcyAyLjYuMC4KTGVhcm4gbW9yZSBhdCBodHRwOi8vaG9sZGVyanMuY29tCihjKSAyMDEyLTIwMTUgSXZhbiBNYWxvcGluc2t5IC0gaHR0cDovL2ltc2t5LmNvCi0tPjxkZWZzPjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+PCFbQ0RBVEFbI2hvbGRlcl8xNGY5NzVmM2FmYSB0ZXh0IHsgZmlsbDojNTU1O2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjQ1cHQgfSBdXT48L3N0eWxlPjwvZGVmcz48ZyBpZD0iaG9sZGVyXzE0Zjk3NWYzYWZhIj48cmVjdCB3aWR0aD0iOTAwIiBoZWlnaHQ9IjUwMCIgZmlsbD0iIzU1NSIvPjxnPjx0ZXh0IHg9IjMzMy4yMDMxMjUiIHk9IjI3MC4xIj45MDB4NTAwPC90ZXh0PjwvZz48L2c+PC9zdmc+" data-holder-rendered="true">-->
+                <div class="carousel-caption" style="color: black">
+                    <h3>Entity Manager</h3>
+                    <p>Quick way to build models based on case.</p>
+                </div>
+            </div>
+        </div>
+        <a class="left carousel-control" href="#carousel-example-captions" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#carousel-example-captions" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+</div>
+</div>
+<div class="demo-contend-wrap">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="article">
+                    <div class="article-head">
+                        <h1 class="article-head-title">作者的话</h1>
+                        <span> 2015年9月4日</span>
+                    </div>
+                    <div class="article-content">
+                        <p>
+                            这东西究竟是要来干什么的？其实这个网站是我帮别人做售前的，用来快速建模和出Demo的。
+                            <br/>
+                            因为Node版没有工作流，数据库是MongoDB，所以报表什么的也没有，总之是个很简陋的东西。
+                            但是要来展示我觉得是够了的。
+                            <br/>
+                            这个站点的路由是基于angularRoute.json这个后台的文件的，但是可以直接在viewsEditor上面改，每个路由页面都有独立的js依赖和css依赖，路由跳转后会删除，并不需要担心冲突。
+                            <br/>
+                            比.net版还少了注册webmethod的功能，现在逻辑只能通过配置权限来处理crud的检测，以后会补上，主要是做.net版的时候浪费了大量的时间。
+                            <br/>
+                            写js尽量用framework.Class.extend，因为以后写注入会更加方便一些。
+                            <br/>
+                            写在components里面的组件并不会用gulp之类的工具打包，他就是一个独立的component，css/js加载多了就多了吧，cache-control/expires设了一年的，多个0.2秒也差不了多少。
+                        </p>
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-4 sidebar">
+                <div class="widget">
+                    <h4 class="title">Source</h4>
+                    <div>
+                        <p style=" ">
+                            <span class="glyphicon" style="background-image: url('/images/github-logo.png');background-size:cover;height: 30px;width: 30px;font-size: 14px;vertical-align:middle; " aria-hidden="true"></span>
+                            <a href="https://github.com/Overflow007/demo" title="Github" target="_blank" style="vertical-align:middle; "><i class="fa fa-comments"></i> Github地址</a></p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+</div>

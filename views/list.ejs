@@ -1,0 +1,68 @@
+<div class='view'  data-ng-controller='UIListController' style='height:99%;overflow:auto;padding:10px;'>
+    <header>
+        <h3>
+            <span class='glyphicon glyphicon-flag'></span><%=entityName%>
+        </h3>
+    </header>
+    <table class='table table-responsive table-hover'>
+        <thead>
+        <tr>
+            <%if(multiselector!=null){%>
+            <th style='width:100px;min-width:100px'>
+                <%if(multiselector=='true'){%>
+                    <input type='checkbox' name='checkall' ng-model='checkall'/>
+                <%}%>
+            </th>
+            <%}%>
+            <%for(var attrName in entity.schema ){
+                if(entity.schema[attrName].special=='password')continue;
+            %>
+                <th><span><%=attrName%></span></th>
+            <%}%>
+        </tr>
+        </thead>
+        <tbody>
+
+
+        <tr  ng-repeat='item in entities' entityId='{{item._id}}'>
+            <%if(multiselector!=null){%>
+            <td class='ChoosingCell'>
+                <%if(multiselector=='true'){%>
+                <input type='checkbox' name='checkone' ng-model='$parent.chosenIds[item._id]'/>
+                <%}else{%>
+                <input type='radio' name='chosenIds' value='{{item._id}}' ng-model='$parent.chosenIds'/>
+                <%}%>
+            </td>
+            <%}%>
+            <%for(var attrName in entity.schema ){
+                if(entity.schema[attrName].special=='password')continue;
+                var type= entity.schema[attrName];
+                if(type.ref){
+                    if(type.special){%>
+                        <td><span>{{item.<%=attrName%>.<%=type.special%>}}</span></td>
+                    <%  }else{%>
+                    <td><span>{{item.<%=attrName%>._id}}</span></td>
+            <% }
+            }else{%>
+            <td><span>{{item.<%=attrName%>}}</span></td>
+            <%}
+            }%>
+        </tr>
+        </tbody>
+    </table>
+    <nav>
+        <ul class="pagination">
+            <li ng-class="{'disabled':0==currentPage}">
+                <a ng-click="previous()"  ng-disabled="0==currentPage" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+            <li ng-repeat="p in pages"  ng-class="{'active':p==currentPage}"><a ng-disabled="p==currentPage" ng-click="loadPage(p)">{{p+1}}</a></li>
+            <li  ng-class="{'disabled':totalPage==0||(totalPage-1)==currentPage}" >
+                <a ng-click="next()"  ng-disabled="totalPage==0||(totalPage-1)==currentPage"   aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</div>

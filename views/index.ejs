@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+    <html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link href="javascripts/bootstrap-3.3.4/css/bootstrap.min.css" rel="stylesheet" />
+      <!--  <link href="javascripts/bootstrap-3.3.4/bootstrap-datepicker/css/bootstrap-datepicker.min.css" rel="stylesheet" />-->
+        <link href="javascripts/bootstrap-3.3.4/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+        <link href="app/themes/css/default.css" rel="stylesheet" />
+        <title><%= title %></title>
+        <script src="javascripts/lodash-3.10.0/lodash.min.js"></script>
+        <script src="javascripts/basicscript.js"></script>
+        <script src="javascripts/basicscript.scope.js"></script>
+    </head>
+    <body class="edit">
+    <!--<script src="app/libs/JSONConvertor.js"></script>-->
+    <script src="javascripts/jquery/jquery.min.js"></script>
+    <script src="javascripts/bootstrap-3.3.4/js/bootstrap.min.js"></script>
+    <!--<script src="javascripts/bootstrap-3.3.4/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+    <script src="javascripts/bootstrap-3.3.4/bootstrap-datepicker/locales/bootstrap-datepicker.fr-CH.min.js"></script>-->
+    <script src="javascripts/bootstrap-3.3.4/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
+    <script src="javascripts/bootstrap-3.3.4/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.fr.js"></script>
+
+    <script src="javascripts/angular/angular.min.js"></script>
+    <script src="javascripts/angular/angular-route.min.js"></script>
+    <script src="javascripts/angular/angular-cookies.min.js"></script>
+    <!--  <script src="basicscript/angular/angular-animate.min.js"></script>-->
+
+    <script src="javascripts/require.min.js" data-main="javascripts/main"></script>
+    <link rel="stylesheet/less" type="text/css" href="styles.less">
+
+    <div id='poplayer' data-ng-controller="PoplayerController">
+        <!--<datepicker value="fuckfuckdate"></datepicker>
+        <datepicker value="fuckfuckdate"></datepicker>-->
+        <!--<datepicker value="fuckfuckdate"></datepicker>
+        <number id="number" ng-model="fuckfuckda"  precision="2"></number>
+         <number id="number1" ng-model="fuckfuckda" precision="2"></number>-->
+
+    </div>
+    <!-- /.modal -->
+    <nav id="navbar" class="navbar navbar-default" style="margin-bottom: 0px;background:#F7EADC" data-ng-controller="NavbarController as vm">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbarcollapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#/">{{ vm.appTitle }}</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="navbarcollapse">
+                <ng-include src="'app/views/nvbar.html'" ng-if="!$rootScope.hideNavbar"></ng-include>
+
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+    <div id="bodyContent" class="underCollapseNavbar" style="width: 100%; top: 52px; bottom: 0px; left: 0px; z-index: -1;">
+
+        <div data-ng-view id="ng-view" style="height: 99.9%; min-height: 99.9%; width: 100%;"></div>
+    </div>
+    <!-- #bodyContent is substitude for the deleted #ng-view while routing and changing .underCollapseNavbar's top-->
+    <script>
+        $(function () {
+            var navbar = $('#navbar');
+            var getter = function () { return navbar.height() };
+            window.GlobalRootScope.$watch(getter, function (newValue, oldValue, scope) {
+                $('.underCollapseNavbar').each(function (index, val) {
+                    var newWidth = parseFloat(newValue);
+                    newWidth = isNaN(newWidth) ? 0 : newWidth;
+                    $(val).css('top', newWidth.toString() + 'px')
+                });
+
+            });
+            window.GlobalRootScope.$beginIntervalWatching(300);//need to change as window.onresize(function(){setTimeout();})
+        });
+
+    </script>
+
+
+    <!-- <script src="basicscript/ckfinder/ckfinder.js"></script>-->
+
+
+    </body>
+    </html>

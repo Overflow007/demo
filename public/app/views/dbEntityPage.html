@@ -1,0 +1,194 @@
+﻿<div class='view'>
+    <div class='container'>
+        <form name="dbEntityForm" data-ng-controller="DBEntityPageController" novalidate>
+            <br />
+            <header>
+                <div class='jumbotron'>
+                    <h3><span class='glyphicon glyphicon-flag'></span>Database Entity</h3>
+                    <div class='row'>
+                        <div class='col-md-2'>
+                            <label class='control-label' for='PrimaryName'>Primary Name:</label>
+                        </div>
+                        <div class='col-md-10'>
+                            <div class='form-inline'>
+                                <input class='form-control cryptic' name='PrimaryName' type='text' ng-maxlength='255' ng-model='dbEntity.PrimaryName' ng-blur="FillName(dbEntity.PrimaryName)" required />
+                                <div class='tooltip bottom' role='tooltip' style='opacity: 1; z-index: 0px;' ng-show='dbEntityForm.PrimaryName.$touched && dbEntityForm.PrimaryName.$invalid'>
+                                    <div class='tooltip-arrow' style='border-bottom-color: #f2dede;'></div>
+                                    <div class='alert-danger' style='padding: 3px 8px; border-radius: 4px; text-align: center; text-decoration: none;'>PrimaryName is required and length must be less than 255</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <div class='row'>
+                        <div class='col-md-2'>
+                            <label class='control-label' for='BasicTable'>Basic Table:</label>
+                        </div>
+                        <div class='col-md-10'>
+                            <div class='form-inline'>
+                                <input class='form-control cryptic' name='BasicTable' type='text' ng-maxlength='30' ng-model='dbEntity.BasicTable' ng-blur="FillName(dbEntity.BasicTable)" required />
+                                <div class='tooltip bottom' role='tooltip' style='opacity: 1; z-index: 0px;' ng-show='dbEntityForm.BasicTable.$touched && dbEntityForm.BasicTable.$invalid'>
+                                    <div class='tooltip-arrow' style='border-bottom-color: #f2dede;'></div>
+                                    <div class='alert-danger' style='padding: 3px 8px; border-radius: 4px; text-align: center; text-decoration: none;'>BasicTable is required and length must be less than 30</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <div class='row'>
+                        <div class='col-md-2'>
+                            <label class='control-label' for='EntityView'>Entity View:</label>
+                        </div>
+                        <div class='col-md-10'>
+                            <div class='form-inline'>
+                                <input class='form-control cryptic' name='EntityView' type='text' ng-maxlength='30' ng-model='dbEntity.EntityView' ng-blur="FillName(dbEntity.EntityView)" required />
+                                <div class='tooltip bottom' role='tooltip' style='opacity: 1; z-index: 0px;' ng-show='dbEntityForm.EntityView.$touched && dbEntityForm.EntityView.$invalid'>
+                                    <div class='tooltip-arrow' style='border-bottom-color: #f2dede;'></div>
+                                    <div class='alert-danger' style='padding: 3px 8px; border-radius: 4px; text-align: center; text-decoration: none;'>EntityView is required and length must be less than 30</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <div class='row'>
+                        <div class='col-md-2'>
+                            <label class='control-label' for='DisplayName'>Display Name:</label>
+                        </div>
+                        <div class='col-md-10'>
+                            <div class='form-inline'>
+                                <input class='form-control cryptic' name='DisplayName' type='text' ng-maxlength='255' ng-model='dbEntity.DisplayName' ng-blur="FillName(dbEntity.DisplayName)" required />
+                                <div class='tooltip bottom' role='tooltip' style='opacity: 1; z-index: 0px;' ng-show='dbEntityForm.DisplayName.$touched && dbEntityForm.DisplayName.$invalid'>
+                                    <div class='tooltip-arrow' style='border-bottom-color: #f2dede;'></div>
+                                    <div class='alert-danger' style='padding: 3px 8px; border-radius: 4px; text-align: center; text-decoration: none;'>DisplayName is required and length must be less than 255</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </header>
+
+            <div class='panel-group' id='accordion' role='tablist' aria-multiselectable='true'>
+                <div class='panel panel-default'>
+                    <div class='panel-heading' role='tab' id='headingMinor'>
+                        <h4 class='panel-title'><a role='button' data-toggle='collapse' href='#collapseMinor' aria-expanded='true' aria-controls='collapseMinor'>Collapsible Group Minor Item</a></h4>
+                    </div>
+                    <div id='collapseMinor' class='panel-collapse collapse in' role='tabpanel' aria-labelledby='headingMinor'>
+                        <div class='panel-body'>
+                            <div class='row'>
+                                <div class='col-md-2'>
+                                    <label class='control-label' for='IsSystemEntity'>Is System Entity:</label>
+                                </div>
+                                <div class='col-md-10'>
+                                    <div class='form-inline'>
+                                        <input class='form-control' name='IsSystemEntity' type='checkbox' ng-model='dbEntity.IsSystemEntity' />
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class='row'>
+                                <div class='col-md-2'>
+                                    <label class='control-label' for='IsLogicalDelete'>Is Logical Delete:</label>
+                                </div>
+                                <div class='col-md-10'>
+                                    <div class='form-inline'>
+                                        <input class='form-control' name='IsLogicalDelete' type='checkbox' ng-model='dbEntity.IsLogicalDelete' />
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--<div class='row'>
+                                <div class='col-md-2'>
+                                    <label class='control-label' for='IsLogicalDelete'>Is Logical Delete:</label>
+                                </div>
+                                <div class='col-md-10'>
+                                    <div class='form-inline'>
+                                        <div class='form-inline' type='cascade'>
+                                            <div class='input-group'>
+                                                <input type='text' readonly='readonly' class='form-control camouflage ng-pristine ng-untouched ng-valid' ng-model='' />
+                                                <span class='input-group-addon btn camouflage' ng-click='cascade()'><span class='glyphicon glyphicon-search'></span></span>
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class='panel-group' id='Div1' role='tablist' aria-multiselectable='true'>
+                <div class='panel panel-default'>
+                    <div class='panel-heading' role='tab' id='headingAttr'>
+                        <h4 class='panel-title'><a role='button' data-toggle='collapse' href='#collapseAttr' aria-expanded='true' aria-controls='collapseAttr'>Collapsible Group Attributes</a></h4>
+                    </div>
+                    <div id='collapseAttr' class='panel-collapse collapse in' role='tabpanel' aria-labelledby='headingAttr'>
+                        <div class='panel-body'>
+                            <table class='table table-responsive table-hover'>
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            <button class='btn btn-default' data-toggle='tooltip' data-placement='top' title='Add' ng-click='AddAttr($event);'>
+                                                <span class='glyphicon glyphicon-plus'></span>
+                                            </button>
+                                        </th>
+                                        <th>PhysicalName</th>
+                                        <th>AttributeDisplayName</th>
+
+                                        <!--<th>DefaultValue</th>
+                                        <th>ComplexTypeGroup</th>
+                                        <th>EntityRelationship</th>
+                                        <th>IsPKAttribute</th>
+                                        <th>IsVirtual</th>
+                                        <th>IsPrimaryName</th>
+                                        
+                                        
+                                        <th>DbType</th>
+                                        <th>IsNullable</th>
+                                        <th>Precision</th>
+                                        <th>Length</th>
+                                        <th>IsUnique</th>-->
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <div class='btn-group'>
+                                                <span class='glyphicon glyphicon-king' title="Primary Key"></span>
+
+                                            </div>
+                                        </td>
+                                        <td>{{dbEntity.PKAttribute.PhysicalName}}</td>
+                                        <td>{{dbEntity.PKAttribute.AttributeDisplayName}}</td>
+                                    </tr>
+                                    <tr ng-repeat="item in dbEntity.Attributes | filter:{'IsPKAttribute':false}">
+                                        <td>
+                                            <div class='btn-group'>
+                                                <button class='btn btn-default' data-toggle='tooltip' data-placement='top' title='Edit' ng-click='EditAttr($event,item);'><span class='glyphicon glyphicon-pencil'></span></button>
+                                                <button class='btn btn-default' data-toggle='tooltip' data-placement='bottom' title='Delete' ng-click='DeleteAttr($event,item);'><span class='glyphicon glyphicon-remove'></span></button>
+                                            </div>
+                                        </td>
+                                        <td>{{item.PhysicalName}}</td>
+                                        <td>{{item.AttributeDisplayName}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr />
+            <div class='row'>
+                <div class='col-md-12'>
+                    <button type='submit' class='btn btn-primary' data-ng-click='Save()' ng-disabled='dbEntityForm.$invalid || !dbEntityForm.$dirty'>Save</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,92 @@
+﻿<div class="lable label-default rotate90 button-hover affix " id="toolBarFixed"  style="top: 120px; left: -16px; vertical-align: middle;" onclick="$('#toolBarExpanded').show();$('#toolBarFixed').hide();$('#viewEditorMainPanel').css('width','auto');">
+    Tools
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true">
+</div>
+<!--toolBarFixed-->
+
+<div class="container-fluid" id="viewsEditorContainer" ng-controller="ViewsEditorController" style="height: 99%; padding: 1px; vertical-align: text-top;margin-top:1px;">
+    <div id="toolBarExpanded" class="boder-right-solid" style="display: inline-block; height: 99%; vertical-align: top;">
+        <div class="lable label-default button-hover" style="width: 100%" onclick="$('#toolBarFixed').show();$('#toolBarExpanded').hide();$('#viewEditorMainPanel').css('width','100%');">
+            Tools
+            <span class="glyphicon glyphicon-chevron-left pull-right" aria-hidden="true">
+        </div>
+        <div class="tree">
+            <ul>
+                <li>
+                    <span>Root</span>
+                    <ul>
+                        <li ng-repeat="item in FileTree  track by $index">
+
+                            <span title="Collapse this branch" class="lable label-success" ng-if="item.type=='folder'" aria-hidden="true"><span class="glyphicon glyphicon-folder-open" ng-click="CollapseExpandFolder($event)" aria-hidden="true"></span>{{item.Name}}</span>
+                            <span class="lable label-info" ng-if="item.type=='file'" ng-click="OpenFile(item)" aria-hidden="true">
+                                <span class="glyphicon glyphicon-file" aria-hidden="true"></span>
+                                {{item.Name}}
+
+                            </span>
+                            <span ng-if="item.type=='file'" class="glyphicon glyphicon-remove" aria-hidden="true" ng-click="TryDeleteFile(item)"></span>
+                            <ul ng-if="item.type=='folder'" ng-init="parent = item" include-recursion="app/views/fileTreeTplRecursive.html">
+                            </ul>
+
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!--toolBarExpanded-->
+
+    <div id="viewEditorMainPanel" style="display: inline-block; vertical-align: top; padding: 25px">
+
+        <ul id="fileTab" class="nav nav-tabs">
+            <!--<li class="{{NewFile.myActive}}">
+                <a data-toggle="tab" style="float: left;"  ng-click="OpenFile(NewFile);">
+                    {{NewFile.FileName}}
+                </a>
+            </li>-->
+            <li ng-repeat="item in EditingFiles track by $index" active="{{CurrentEditingFile==item}}">
+                <a href="#identifier" data-toggle="tab" style="float: left;"  ng-click="OpenFile(item)">
+                    {{item.Name}}
+                    <span ng-if="item!=NewFile" aria-hidden="true" class="close" aria-label="Close" ng-click="CloseFile(item)">&times;</span>
+                </a>
+            </li>
+        </ul>
+        <div id="myTabContent" class="tab-content">
+            <div class="tab-pane fade in active" id="New" style="padding: 5px 10px;">
+                <textarea rows="30" cols="50" name="editor01">请输入.</textarea>
+                <script type="text/javascript">
+                    $(function () {
+                        $('#toolBarFixed').show(); $('#toolBarExpanded').hide(); $('#viewEditorMainPanel').css('width', '100%');
+                    });
+                    require(["../javascripts/ckeditor/config"], function () {
+                        CKEDITOR.plugins.registered['save'] =
+                                       {
+                                           init: function (editor) {
+                                               var command = editor.addCommand('save',
+                                                  {
+                                                      modes: { wysiwyg: 1, source: 1 },
+                                                      exec: function (editor) {
+                                                          var fo = editor.element.$.form;
+                                                          editor.updateElement();
+                                                          angular.element('#viewsEditorContainer').scope().TrySaveFile(editor.getData());
+                                                      }
+                                                  }
+                                               );
+                                               editor.ui.addButton('Save', { label: 'Save', command: 'save' });
+                                           }
+                                       }
+                        var editor = CKEDITOR.replace('editor01');
+                    });
+
+                    //CKFinder.setupCKEditor(editor, 'basicscript/ckfinder/');
+
+                </script>
+            </div>
+        </div>
+
+    </div>
+
+    <!--  <div class="row">
+        
+        
+    </div>-->
+</div>

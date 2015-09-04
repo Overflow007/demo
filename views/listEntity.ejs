@@ -1,0 +1,17 @@
+<div class="view ng-scope" style="padding-top:10px;">
+<div class="container">
+    <div class="panel panel-danger ng-scope">
+        <div class="panel-heading">
+            <h3 class="panel-title">Please select an entity</h3>
+        </div>
+        <div class="panel-body">
+            <%
+            for(var e in metadata ){
+             %>
+            <p><a href="#/<%=method%>?entityName=<%=metadata[e].name%>"><%=metadata[e].name%></a></p>
+            <%}%>
+
+        </div>
+    </div>
+</div>
+    </div>

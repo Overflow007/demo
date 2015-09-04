@@ -1,0 +1,146 @@
+﻿<div ng-controller="DBAttrPopController as dc">
+    <!--"-->
+    <div class='panel panel-default'>
+        <div class='panel-heading'>
+            <div class='row'>
+                <div class="title">PhysicalName</div>
+                <div class="form-inline" ng-switch on="IsNewAttr()">
+                    <input ng-switch-when="true" class='form-control' name='PhysicalName' type='text' ng-maxlength='30' ng-model='attr.PhysicalName' />
+                    <p ng-switch-when="false" class='form-control cleanFormControl'>{{attr.PhysicalName}}</p>
+                </div>
+
+            </div>
+            <div class='row'>
+                <div class="title">AttributeDisplayName</div>
+
+                <div class="form-inline">
+                    <input class='form-control' name='AttributeDisplayName' type='text' ng-maxlength='30' ng-model='attr.AttributeDisplayName' />
+                </div>
+            </div>
+            <div class='row'>
+                <div class="title">DbType</div>
+                <div class="form-inline">
+                    <select ng-model="attr.DbType" class="form-control" ng-options="dbtype.id as dbtype.text for dbtype in dbtypeOptions" ng-disabled="!(IsNewAttr())">
+                    </select>
+
+                </div>
+            </div>
+
+        </div>
+        <div class='panel-body'>
+
+            <div class='row'>
+                <div class="title">DefaultValue</div>
+
+                <div class="form-inline" ng-switch on="IsNewAttr()">
+                    <input class='form-control' name='DefaultValue' type='text' ng-maxlength='255' ng-model='attr.DefaultValue' ng-switch-when="true" />
+                    <p ng-switch-when="false" class='form-control cleanFormControl'>{{attr.DefaultValue}}</p>
+                </div>
+            </div>
+
+            <div class='row'>
+                <div class="title">ComplexTypeGroup</div>
+
+                <div class="form-inline" ng-switch on="IsNewAttr()">
+                    <input class='form-control' name='ComplexTypeGroup' type='text' ng-maxlength='255' ng-model='attr.ComplexTypeGroup' ng-switch-when="true" />
+                    <p ng-switch-when="false" class='form-control cleanFormControl'>{{attr.ComplexTypeGroup}}</p>
+                </div>
+            </div>
+            <div class='row'>
+                <div class="title">Precision</div>
+
+                <div class="form-inline" ng-switch on="IsNewAttr()">
+                    <number class='form-control' name='Precision' precision="0" ng-model='attr.Precision' ng-switch-when="true"></number>
+                    <p ng-switch-when="false" class='form-control cleanFormControl'>{{attr.Precision}}</p>
+                </div>
+            </div>
+
+            <div class='row'>
+                <div class="title">Length</div>
+
+                <div class="form-inline" ng-switch on="IsNewAttr()">
+                    <number class='form-control' name='Length' precision="0" ng-model='attr.Length' ng-switch-when="true"></number>
+                    <p ng-switch-when="false" class='form-control cleanFormControl'>{{attr.Length}}</p>
+                </div>
+            </div>
+            <div class='row'>
+                <div class="form-inline">
+                    <table class='table table-responsive table-hover'>
+                        <thead>
+                            <tr>
+
+                                <th>Unique</th>
+                                <th>Nullable</th>
+                                <th>Virtual</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+
+                                <td>
+                                    <input name='IsUnique' type='checkbox' ng-model='attr.IsUnique' ng-disabled="!(IsNewAttr())" />
+                                </td>
+                                <td>
+                                    <input name='IsNullable' type='checkbox' ng-model='attr.IsNullable' ng-disabled="!(IsNewAttr())" />
+                                </td>
+                                <td>
+                                    <input name='IsVirtual' type='checkbox' ng-model='attr.IsVirtual' ng-disabled="!(IsNewAttr())" />
+                                </td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+
+            <div class='row' ng-show="attr.DbType==14">
+                <div class="title">EntityRelationship</div>
+
+                <div class="form-inline">
+                    <div ng-show="!HasRelationship()">
+
+                        <select ng-model="SelectedEntity" class="form-control" ng-options="k as e.DisplayName for (k,e) in DBEntities" ng-disabled="!(IsNewAttr())">
+                        </select>
+                        <button class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Add" ng-click="AddRelationship($event);">
+                            <span class="glyphicon glyphicon-plus"></span>
+                        </button>
+                    </div>
+                    <div ng-show="HasRelationship()">
+                        <table class='table table-responsive table-hover'>
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>Relationship Name</th>
+                                    <th>OtherSide Name</th>
+                                    <th>Soft Link</th>
+                                    <th>OS SL</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr>
+                                    <td><button class='btn btn-default' data-toggle='tooltip' data-placement='bottom' title='Delete' ng-click='DeleteRelationship($event);'>
+                            <span class='glyphicon glyphicon-remove'></span>
+
+                        </button></td>
+                                    <td>
+                                        <input type="text" class="form-control" ng-model="attr.ForeignRelationShip.RelationShipName" /></td>
+                                    <td>
+                                        <input type="text" class="form-control" ng-model="attr.ForeignRelationShip.OtherSide.RelationShipName" /></td>
+                                    <td>
+                                        <input name='IsUnique' class="form-control" type='checkbox' ng-model='attr.ForeignRelationShip.IsSoftLink' /></td>
+                                    <td>
+                                        <input name='IsUnique' class="form-control" type='checkbox' ng-model='attr.ForeignRelationShip.OtherSide.IsSoftLink' /></td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,86 @@
+<div class="view">
+    <div class="container">
+        <header>
+            <h3><span class="glyphicon glyphicon-lock"></span> Register</h3>
+        </header>
+        <form name="registerForm" novalidate>
+            <div class="login">
+                <div class="row">
+                    <div class="col-md-2">
+                        Email<span style="color:red">*</span>:
+                    </div>
+                    <div class="col-md-10">
+                        <input type="email" name="email" class="form-control" data-ng-model="vm.email" required />
+                        <span class="errorMessage" ng-show="registerForm.email.$touched && registerForm.email.$invalid">
+                            Email is required
+                        </span>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-md-2">
+                        Password<span style="color:red">*</span>:
+                    </div>
+                    <div class="col-md-10">
+                        <input type="password" name="password" class="form-control"  id="userPassword"
+                               data-ng-model="vm.password"
+                               data-ng-minlength="6"
+                               required />
+                        <span class="errorMessage" ng-show="registerForm.password.$touched && registerForm.password.$invalid">
+                            Password is required
+                        </span>
+                    </div>
+                </div>
+                <br />
+
+                <div class="row">
+                    <div class="col-md-2">
+                       Repeat Password<span style="color:red">*</span>:
+                    </div>
+                    <div class="col-md-10">
+                        <input type="password" name="repeatPassword" class="form-control"
+                               data-ng-model="vm.repeatPassword"
+                               data-ng-minlength="6"
+                               required  pw-check="userPassword" />
+                        <span class="errorMessage" ng-show="registerForm.repeatPassword.$touched && registerForm.repeatPassword.$invalid">
+                           Repeat Password is required and must be equaled with password
+                        </span>
+                    </div>
+                </div>
+                <br />
+
+                <div class="row">
+                    <div class="col-md-2">
+                        Name<span style="color:red">*</span>:
+                    </div>
+                    <div class="col-md-10">
+                        <input type="text" name="nikename" class="form-control" data-ng-model="vm.name" required />
+                        <span class="errorMessage" ng-show="registerForm.nikename.$touched && registerForm.nikename.$invalid">
+                            Name is required
+                        </span>
+                    </div>
+                </div>
+                <br />
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <button type="submit" class="btn btn-primary"
+                                data-ng-click="vm.register()"
+                                ng-disabled="registerForm.$invalid"><!-- || !loginForm.$dirty-->
+                            Register
+                        </button>
+
+
+                    </div>
+                </div>
+                <br />
+                <div class="statusRow">
+                    <br />
+                    <div class="label label-important" data-ng-show="vm.errorMessage">
+                        <span class="glyphicon glyphicon-thumbs-down icon-white"></span>&nbsp;&nbsp;Error: {{ vm.errorMessage }}
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

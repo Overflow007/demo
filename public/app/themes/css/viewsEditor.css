@@ -1,0 +1,134 @@
+﻿.tree {
+    /*min-height:20px;
+    padding:19px;
+    margin-bottom:20px;
+    background-color:#fbfbfb;
+    border:1px solid #999;
+    -webkit-border-radius:4px;
+    -moz-border-radius:4px;
+    border-radius:4px;*/
+    -webkit-box-shadow:inset 0 1px 1px rgba(0, 0, 0, 0.05);
+    -moz-box-shadow:inset 0 1px 1px rgba(0, 0, 0, 0.05);
+    box-shadow:inset 0 1px 1px rgba(0, 0, 0, 0.05)
+}
+
+.tree span.glyphicon {
+        border:none;
+        padding:3px 7px;
+        color:black;
+}
+ 
+.tree li {
+    list-style-type:none;
+    margin:0;
+    padding:10px 5px 0 5px;
+    position:relative
+}
+.tree li::before, .tree li::after {
+    content:'';
+    left:-20px;
+    position:absolute;
+    right:auto
+}
+.tree li::before {
+    border-left:1px solid #999;
+    bottom:50px;
+    height:100%;
+    top:0;
+    width:1px
+}
+.tree li::after {
+    border-top:1px solid #999;
+    height:20px;
+    top:25px;
+    width:25px
+}
+.tree li span {
+    -moz-border-radius:5px;
+    -webkit-border-radius:5px;
+    border:1px solid #999;
+    border-radius:5px;
+    display:inline-block;
+    padding:3px 8px;
+    text-decoration:none;
+   
+}
+.tree span[ng-click] {
+    cursor:pointer
+}
+.tree>ul>li::before, .tree>ul>li::after {
+    border:0
+}
+.tree li:last-child::before {
+    height:30px
+}
+.tree span[ng-click].label-info:hover {
+    background:#eee;
+    border:1px solid #94a0b4;
+    color:#000
+}
+
+.tree .label-success {
+    background-color: #f89406;
+}
+
+/*.tree .label-info {
+    background-color: #468847;
+}*/
+
+
+.tree span.glyphicon-remove {
+        position:relative;
+        width:0px;
+        right:10px;
+        opacity:0.4;
+    }
+
+.tree span.glyphicon-remove:hover {
+       
+        opacity: 1;
+        transform:scale(1.2);
+        -webkit-transform:scale(1.2);
+        -moz-transform:scale(1.2);
+        -ms-transform:scale(1.2); 	/* IE 9 */
+        -o-transform:scale(1.2); 
+        cursor:pointer;
+    }
+
+.rotate90 {
+    transform:rotate(90deg);
+        -webkit-transform:rotate(90deg);
+        -moz-transform:rotate(90deg);
+        -ms-transform:rotate(90deg); 	/* IE 9 */
+        -o-transform:rotate(90deg);
+}
+
+.button-hover:hover {
+    background:#eee;
+    border:1px solid #94a0b4;
+    color:#000;
+    cursor:pointer;
+}
+
+.boder-right-solid {
+border-right:solid;
+border-right-width:1px;
+border-right-color:#ddd;
+}
+
+.nav-tabs > li[active="true"] > a,
+.nav-tabs > li[active="true"] > a:hover,
+.nav-tabs > li[active="true"] > a:focus {
+  color: #555;
+  cursor: default;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-bottom-color: transparent;
+}
+
+.nav-pills > li[active="true"] > a,
+.nav-pills > li[active="true"] > a:hover,
+.nav-pills > li[active="true"] > a:focus {
+  color: #fff;
+  background-color: #337ab7;
+}

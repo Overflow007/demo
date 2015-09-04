@@ -1,0 +1,78 @@
+﻿.entityDiv {
+            border: 1px solid #346789;
+            box-shadow: 2px 2px 19px #aaa;
+            -o-box-shadow: 2px 2px 19px #aaa;
+            -webkit-box-shadow: 2px 2px 19px #aaa;
+            -moz-box-shadow: 2px 2px 19px #aaa;
+            -moz-border-radius: 0.5em;
+            border-radius: 0.5em;
+            opacity: 0.8;
+            filter: alpha(opacity=80);
+            width: auto;
+            height: auto;
+            /*line-height: 80px;*/
+            cursor: pointer;
+            text-align: center;
+            z-index: 0;
+            position: absolute;
+            background-color: #eeeeef;
+            color: black;
+            font-family: helvetica;
+            padding: 0.5em;
+            font-size: 0.9em;
+            -webkit-transition: -webkit-box-shadow 0.15s ease-in;
+            -moz-transition: -moz-box-shadow 0.15s ease-in;
+            -o-transition: -o-box-shadow 0.15s ease-in;
+            transition: box-shadow 0.15s ease-in;
+        }
+
+
+    .entityDiv>p:first-child {
+        
+    border-bottom:1px solid red;
+    }
+
+        ._jsPlumb_connector {
+            z-index: 4;
+        }
+
+        ._jsPlumb_endpoint, .endpointTargetLabel, .endpointSourceLabel {
+            z-index: 21;
+            cursor: pointer;
+        }
+
+        .aLabel {
+            background-color: white;
+            padding: 0.4em;
+            font: 12px sans-serif;
+            color: #444;
+            z-index: 21;
+            border: 1px dotted gray;
+            opacity: 0.8;
+            filter: alpha(opacity=80);
+            cursor: pointer;
+        }
+
+            .aLabel._jsPlumb_hover {
+                background-color: #5C96BC;
+                color: white;
+                border: 1px solid white;
+            }
+
+        .entityDiv._jsPlumb_connected {
+            border: 2px solid green;
+        }
+
+        .jsplumb-drag {
+            border: 4px solid pink !important;
+        }
+
+        path, ._jsPlumb_endpoint {
+            cursor: pointer;
+        }
+
+.attributeDiv {
+    
+    padding-left:15px;
+    padding-right:15px;
+}

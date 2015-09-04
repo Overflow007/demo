@@ -1,0 +1,15 @@
+{
+  "name":"user"
+,"schema":{
+  "email":{ "type": String, "index": true, "unique": true, "special": "email" , "required": true }
+,"password":{ "type": String, "special": "password", "required": true }
+,"iconUrl":{ "type": String, "special": "img", "required": true }
+,"verification":{"type": Boolean}
+,"createAt":{ "type": Date, "default": Date.now }
+,"lastLoginAt":{ "type": Date, "default": Date.now }
+,"updateAt":{ "type": Date, "default": Date.now, "special": Date.now }
+,"name":{ "type": String, "index": true, "unique": true  }
+, "person":{"type":mongoose.Schema.Types.ObjectId,"ref":"person", "special":"name"}
+  ,"roles":[{"type":mongoose.Schema.Types.ObjectId,"ref":"role", "special":"name"}]
+}
+}

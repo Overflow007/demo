@@ -1,0 +1,13 @@
+﻿<li ng-repeat="item in parent.children  track by $index">
+    <span title="Collapse this branch" class="lable label-success" ng-if="item.type=='folder'">
+        <span class="glyphicon glyphicon-folder-close" ng-click="CollapseExpandFolder($event)"></span>{{item.Name}}</span>
+    <span class="lable label-info" ng-if="item.type=='file'" ng-click="OpenFile(item)">
+
+        <span class="glyphicon glyphicon-file"></span>
+        {{item.Name}}  
+       
+    </span>
+    <span  ng-if="item.type=='file'"  class="glyphicon glyphicon-remove"  ng-click="TryDeleteFile(item)"></span>
+    <ul hidden ng-if="item.type=='folder'" ng-init="parent = item" include-recursion="app/views/fileTreeTplRecursive.html">
+    </ul>
+</li>

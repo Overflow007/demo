@@ -1,0 +1,210 @@
+<div class='view'>
+    <div class='container'>
+        <form name='entityUIForm' data-ng-controller='UIFormController as uc' novalidate>
+            <br/>
+            <header>
+                <div class='jumbotron'>
+                    <h3>
+                        <span class='glyphicon glyphicon-flag'></span>
+                        user
+                    </h3>
+                </div>
+            </header>
+            <div class='panel-group' id='accordion' role='tablist' aria-multiselectable='true'>
+
+                <div class='panel panel-default'>
+                    <div class='panel-heading' role='tab' id='headingE'>
+                        <h4 class='panel-title'>
+                            <a role='button' data-toggle='collapse'  href='#collapseE' aria-expanded='true' aria-controls='collapseE'>
+                                Collapsible Group Item #E
+                            </a>
+                        </h4>
+                    </div>
+                    <div id='collapseE' class='panel-collapse collapse in' role='tabpanel' aria-labelledby='headingE'>
+                        <div class='panel-body'>
+
+                            <div class='row'>
+                                <div class='col-md-2'>
+                                    <label class='control-label' for='email'>email</label>
+                                </div>
+                                <div class='col-md-10'>
+                                    <div class='form-inline'>
+
+                                        <input name="email" class='form-control' type='email'  ng-model='localEntity.email'  required/>
+
+                                        <div class='tooltip bottom' role='tooltip' style='opacity:1;z-index:0px;'  ng-show='entityUIForm.email.$touched && entityUIForm.email.$invalid'>
+                                            <div class='tooltip-arrow' style='border-bottom-color:#f2dede;'></div>
+                                            <div class='alert-danger' style='padding:3px 8px;border-radius:4px;text-align:center;text-decoration:none;'>email is required.</div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class='panel panel-default'>
+                    <div class='panel-heading' role='tab' id='headingP'>
+                        <h4 class='panel-title'>
+                            <a role='button' data-toggle='collapse'  href='#collapseP' aria-expanded='true' aria-controls='collapseP'>
+                                Collapsible Group Item #P
+                            </a>
+                        </h4>
+                    </div>
+                    <div id='collapseP' class='panel-collapse collapse in' role='tabpanel' aria-labelledby='headingP'>
+                        <div class='panel-body'>
+
+                            <div class='row'>
+                                <div class='col-md-2'>
+                                    <label class='control-label' for='password'>password</label>
+                                </div>
+                                <div class='col-md-10'>
+                                    <div class='form-inline'>
+
+                                        <input name="password" class='form-control' type='password'  ng-model='localEntity.password'  required/>
+
+                                        <div class='tooltip bottom' role='tooltip' style='opacity:1;z-index:0px;'  ng-show='entityUIForm.password.$touched && entityUIForm.password.$invalid'>
+                                            <div class='tooltip-arrow' style='border-bottom-color:#f2dede;'></div>
+                                            <div class='alert-danger' style='padding:3px 8px;border-radius:4px;text-align:center;text-decoration:none;'>password is required.</div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class='row'>
+                                <div class='col-md-2'>
+                                    <label class='control-label' for='person'>person</label>
+                                </div>
+                                <div class='col-md-10'>
+                                    <div class='form-inline'>
+
+                                        <div class='form-inline'><cascade name="person" ng-bind-obj="localEntity.person" ng-display="name" ng-entity=""></cascade></div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class='panel panel-default'>
+                    <div class='panel-heading' role='tab' id='headingC'>
+                        <h4 class='panel-title'>
+                            <a role='button' data-toggle='collapse'  href='#collapseC' aria-expanded='true' aria-controls='collapseC'>
+                                Collapsible Group Item #C
+                            </a>
+                        </h4>
+                    </div>
+                    <div id='collapseC' class='panel-collapse collapse in' role='tabpanel' aria-labelledby='headingC'>
+                        <div class='panel-body'>
+
+                            <div class='row'>
+                                <div class='col-md-2'>
+                                    <label class='control-label' for='createAt'>createAt</label>
+                                </div>
+                                <div class='col-md-10'>
+                                    <div class='form-inline'>
+
+                                        <div class="form-inline"><datepicker name="createAt" value='localEntity.createAt'   ></datepicker></div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class='panel panel-default'>
+                    <div class='panel-heading' role='tab' id='headingL'>
+                        <h4 class='panel-title'>
+                            <a role='button' data-toggle='collapse'  href='#collapseL' aria-expanded='true' aria-controls='collapseL'>
+                                Collapsible Group Item #L
+                            </a>
+                        </h4>
+                    </div>
+                    <div id='collapseL' class='panel-collapse collapse in' role='tabpanel' aria-labelledby='headingL'>
+                        <div class='panel-body'>
+
+                            <div class='row'>
+                                <div class='col-md-2'>
+                                    <label class='control-label' for='lastLoginAt'>lastLoginAt</label>
+                                </div>
+                                <div class='col-md-10'>
+                                    <div class='form-inline'>
+
+                                        <div class="form-inline"><datepicker name="lastLoginAt" value='localEntity.lastLoginAt'   ></datepicker></div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class='panel panel-default'>
+                    <div class='panel-heading' role='tab' id='headingU'>
+                        <h4 class='panel-title'>
+                            <a role='button' data-toggle='collapse'  href='#collapseU' aria-expanded='true' aria-controls='collapseU'>
+                                Collapsible Group Item #U
+                            </a>
+                        </h4>
+                    </div>
+                    <div id='collapseU' class='panel-collapse collapse in' role='tabpanel' aria-labelledby='headingU'>
+                        <div class='panel-body'>
+
+                            <div class='row'>
+                                <div class='col-md-2'>
+                                    <label class='control-label' for='updateAt'>updateAt</label>
+                                </div>
+                                <div class='col-md-10'>
+                                    <div class='form-inline'>
+
+                                        <div class="form-inline"><datepicker name="updateAt" value='localEntity.updateAt'   ></datepicker></div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class='panel panel-default'>
+                    <div class='panel-heading' role='tab' id='headingN'>
+                        <h4 class='panel-title'>
+                            <a role='button' data-toggle='collapse'  href='#collapseN' aria-expanded='true' aria-controls='collapseN'>
+                                Collapsible Group Item #N
+                            </a>
+                        </h4>
+                    </div>
+                    <div id='collapseN' class='panel-collapse collapse in' role='tabpanel' aria-labelledby='headingN'>
+                        <div class='panel-body'>
+
+                            <div class='row'>
+                                <div class='col-md-2'>
+                                    <label class='control-label' for='name'>name</label>
+                                </div>
+                                <div class='col-md-10'>
+                                    <div class='form-inline'>
+
+                                        <input name="name" class='form-control' type='text'  ng-model='localEntity.name'  />
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <hr/>
+            <div class='row'>
+                <div class='col-md-12'>
+                    <button type='submit' class='btn btn-primary' data-ng-click='Save()' ng-disabled='entityUIForm.$invalid || !entityUIForm.$dirty'>{{SaveText}}</button>
+                    <button type='button' class='btn btn-primary' data-ng-click='Delete()' ng-show='uc.ShowDeleteBtn'>{{DeleteText}}</button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>

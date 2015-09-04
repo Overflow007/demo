@@ -1,0 +1,59 @@
+[
+  {
+    "functionName": "viewsEditor",
+    "templateUrl": "app/views/viewsEditor.html",
+    "hideNavbar": false,
+    "secure": true,
+    "jsDependencies": [
+      "javascripts/ckeditor/ckeditor.js",
+      "app/controllers/viewsEditorController.js"
+    ],
+    "css": [
+      "app/themes/css/viewsEditor.css"
+    ]
+  }
+  ,{
+    "functionName": "entityManager",
+    "templateUrl": "app/views/entityManager.html",
+    "hideNavbar": false,
+    "secure": true,
+    "jsDependencies": [
+      "javascripts/jquery-ui-1.11.4/jquery-ui.min.js",
+      "javascripts/jsPlumb/jquery.jsPlumb-1.7.5-min.js",
+      "app/controllers/entityManagerController.js"
+    ],
+    "css": [
+      "app/themes/css/entityManager.css"
+    ]
+  }
+  ,{
+    "functionName": "list",
+    "templateUrl": "list",
+    "hideNavbar": false,
+    "secure": true,
+    "jsDependencies": [
+      "app/controllers/uiListController.js"
+    ],
+    "css": []
+  }
+  ,{
+  "functionName": "grid",
+  "templateUrl": "grid",
+  "hideNavbar": false,
+  "secure": true,
+  "jsDependencies": [
+    "app/controllers/uiGridController.js"
+  ],
+  "css": []
+}
+,{
+  "functionName": "form",
+  "templateUrl": "form",
+  "hideNavbar": false,
+  "secure": true,
+  "jsDependencies": [
+    "app/controllers/uiFormController.js"
+  ],
+  "css": []
+}
+]

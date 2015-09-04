@@ -1,0 +1,27 @@
+<div style="width:auto" class="view">
+<div class="container" style="width:auto" data-ng-controller="AddDBEntityPopController">
+        <div class="row">
+            <div class="col-md-2">
+                Entity Name:
+            </div>
+            <div class="col-md-6">
+                <input type="text" name="entityName" class="form-control" data-ng-model="entityName" required />
+            </div>
+                <span class="errorMessage" ng-show="popupForm.entityName.$touched && popupForm.entityName.$invalid">Entity Name is required
+              </span>
+        </div>
+            <div class="row">
+                <div class="col-md-2">
+                    Schema:
+                </div>
+                <div class="col-md-6">
+                    <textarea name="schema" class="form-control" data-ng-model="schema" required ></textarea>
+
+                </div>
+                <span class="errorMessage" ng-show="popupForm.schema.$touched && popupForm.schema.$invalid">Entity Name is required
+              </span>
+            </div>
+
+
+    </div>
+</div>

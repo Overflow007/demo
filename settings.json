@@ -1,0 +1,7 @@
+{
+  "cookieSecret": "microblogbyvoid",
+  "db": "test",
+  "host": "localhost",
+  "jwtSecret":"Secret",
+  "schemasDir":"../serverScripts/repository/schemas"
+}

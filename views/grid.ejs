@@ -1,0 +1,131 @@
+<div class='view'  data-ng-controller='UIGridController' style='height:99%;overflow:auto;padding:10px;'>
+    <header>
+        <h3>
+            <span class='glyphicon glyphicon-flag'></span><%=entityName%>
+        </h3>
+        <div class="row col-md-8">
+            <div class='col-md-2'>
+            <h4>Condition Object:</h4>
+            </div>
+            <div class='col-md-4'>
+            <input type="text" class="form-control input-medium search-query" ng-model="whereStr" placeholder="Search">
+        </div>
+            <div class='col-md-2'>
+            <button class="btn btn-default" ng-click="Search()">Search</button></div>
+        </div>
+    </header>
+    <table class='table table-responsive table-hover'>
+        <thead>
+        <tr>
+            <%if(multiselector!=null){%>
+            <th style='width:100px;min-width:100px'>
+                <%if(multiselector=='true'){%>
+                <input type='checkbox' name='checkall' ng-model='checkall'/>
+                <%}%>
+            </th>
+            <%}%>
+            <th style='width:150px;min-width:150px'><a class="btn  btn-default" href="#/form?entityName=<%=entityName%>"><span class='glyphicon glyphicon-plus'></span></a></th>
+            <%for(var attrName in entity.schema ){
+                if(entity.schema[attrName].special=='password')continue;
+            %>
+            <th><span><%=attrName%></span></th>
+            <%}%>
+        </tr>
+        </thead>
+        <tbody>
+
+
+        <tr  ng-repeat='item in entities' entityId='{{item._id}}'  ng-init='showEdit=true' >
+            <td>
+            <div class='btn-group' ng-show='showEdit'>
+                <button class='btn btn-default'  ng-model='item' data-toggle='tooltip' data-placement='top' title='Edit' ng-click='Edit($event,item);showEdit = !showEdit;'><span class='glyphicon glyphicon-pencil'></span></button>
+                <button class='btn btn-default'  ng-model='item' data-toggle='tooltip' data-placement='bottom' title='Delete' ng-click='Delete($event,item);'><span class='glyphicon glyphicon-remove'></span></button>
+            </div>
+            <div class='btn-group' ng-show='!showEdit'><button class='btn btn-default' data-toggle='tooltip' data-placement='top' title='Update' ng-click='Update($event,item);'><span class='glyphicon glyphicon glyphicon-floppy-disk'></span></button>
+                <button class='btn btn-default' ng-model='item' data-toggle='tooltip' data-placement='bottom' title='Cancel' ng-click='Cancel($event,item);showEdit = !showEdit;'><span class='glyphicon glyphicon glyphicon-remove-circle'></span></button>
+            </div>
+                <div class='btn-group'><a class="btn  btn-default"  href="#/form?entityName=<%=entityName%>&Id={{item._id}}"><span class='glyphicon glyphicon-eye-open'></span></a></div>
+            </td>
+            <%if(multiselector!=null){%>
+            <td class='ChoosingCell'>
+                <%if(multiselector=='true'){%>
+                <input type='checkbox' name='checkone' ng-model='$parent.chosenIds[item._id]'/>
+                <%}else{%>
+                <input type='radio' name='chosenIds' value='{{item._id}}' ng-model='$parent.chosenIds'/>
+                <%}%>
+            </td>
+            <%}%>
+            <%for(var attrName in entity.schema ){
+                if(entity.schema[attrName].special=='password')continue;
+                var type= entity.schema[attrName]
+                        ,dbType=null
+                        ,special=null;
+                if(typeof(type)==="function"||type instanceof  Array){
+                    dbType=type;
+                }else{
+                    dbType=type.type;
+
+                    special=type.special||null;
+                }
+
+            if(dbType instanceof  Array){
+            %>
+            <td></td>
+
+                <%
+
+            }
+            else{%>
+            <td>
+
+            <%
+                if(type.ref){
+                var displayAttr = special?special:"_id";
+            %>
+                <span ng-show='showEdit'  style="height: 34px;padding: 6px 0px;display: block;">{{item.<%=attrName%>.<%=displayAttr%>}}</span>
+                <div ng-hide='showEdit' class='form-inline'><cascade ng-bind-obj="item.<%=attrName%>" ng-display="<%=displayAttr%>" ng-entity="<%=type.ref%>"></cascade></div>
+            <%
+                }else if(dbType==Number){
+            %>
+                <span ng-show='showEdit'  style="height: 34px;padding: 6px 0px;display: block;">{{item.<%=attrName%>}}</span>
+                <number  ng-hide='showEdit' class='form-control'  ng-model='item.<%=attrName%>'  <%=(type.precision?("precision='"+type.precision.toString()+"'"):"")%>  <%=(type.required?"required":"")%> ></number>
+            <%
+                }else if(dbType==Date){
+            %>
+                <span ng-show='showEdit'  style="height: 34px;padding: 6px 0px;display: block;">{{item.<%=attrName%>}}</span>
+                <div ng-hide='showEdit'  class="form-inline"><datepicker  value='item.<%=attrName%>'  <%=(type.required?"required":"")%> ></datepicker></div>
+            <%
+                }else if(dbType==Boolean){
+            %>
+                <span ng-show='showEdit' style="height: 34px;padding: 6px 0px;display: block;">{{item.<%=attrName%>}}</span>
+                <input ng-hide='showEdit' class='form-control'  type='checkbox'  ng-model='item.<%=attrName%>'  <%=(type.required?"required":"")%>/>
+            <%
+                }else{
+            %>
+                <span ng-show='showEdit'  style="height: 34px;padding: 6px 0px;display: block;"><%=(special=='password'?'******':('{{item.'+attrName+'}}'))%></span>
+                <input ng-hide='showEdit' class='form-control'  type='<%=(special=='password'?'password':(special=='email'?'email':'text'))%>'  ng-model='item.<%=attrName%>'  <%=(type.required?"required":"")%>/>
+            <%
+                }
+              }
+            }
+            %>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <nav>
+        <ul class="pagination">
+            <li ng-class="{'disabled':0==currentPage}">
+                <a ng-click="previous()"  ng-disabled="0==currentPage" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+            <li ng-repeat="p in pages"  ng-class="{'active':p==currentPage}"><a ng-disabled="p==currentPage" ng-click="loadPage(p)">{{p+1}}</a></li>
+            <li  ng-class="{'disabled':totalPage==0||(totalPage-1)==currentPage}" >
+                <a ng-click="next()"  ng-disabled="totalPage==0||(totalPage-1)==currentPage"   aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</div>
